@@ -1,5 +1,10 @@
 package javaProject1;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class TweetCollection {
 	private Tweet[] tweets;
 	private int size;
@@ -35,12 +40,35 @@ public class TweetCollection {
 		return tweets[i];
 	}
 	
+	public void readFile(String path) {
+		try {		
+			BufferedReader read = new BufferedReader(new FileReader(path));
+
+			String line;
+			int i=0;
+			while ((line = read.readLine()) != null) {
+		        Tweet tweet = new Tweet(line);
+		        addTweet(tweet);
+		        i++;
+			};
+			System.out.println("Read " + i + " lines");
+			read.close();
+			
+			System.out.println(tweets[5]);
+				
+		} catch (FileNotFoundException e) {
+			
+		} catch (IOException e) {
+			
+		}
+		
+	}
 	
 	
 	public String toString() {
 		String ret = "";
 		for(int i=0;i<TOSTRING_LINES;i++)
-			System.out.println(tweets[i]);
+			System.out.println("Tweet " + i + ": " + tweets[i]);
 		
 		return ret;
 	}

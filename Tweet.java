@@ -46,6 +46,6 @@ public class Tweet {
 	
 	
 	public String toString() {
-		return polarity + id + user + text;
+		return polarity + "," + id + "," + user + "," + text;
 	}
 }

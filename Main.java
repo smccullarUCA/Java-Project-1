@@ -9,26 +9,12 @@ import java.io.FileNotFoundException;
 public class Main {
 
 	public static void main(String[] args) {
-		try {
-			
-			BufferedReader read = new BufferedReader(new FileReader("trainingProcessed.txt"));
-			
-			TweetCollection tweets = new TweetCollection();
-
-			String line;
-			while ((line = read.readLine()) != null) {
-		        Tweet tweet = new Tweet(line);
-		        tweets.addTweet(tweet);
-			};
-			
-			read.close();
-	
-			
-		} catch (FileNotFoundException e) {
-			
-		} catch (IOException e) {
-			
-		}
-	
+		final String PATH = "trainingProcessed.txt";
+		TweetCollection tweets = new TweetCollection();
+		tweets.readFile(PATH);
+		
+		System.out.println(tweets);		
+		System.out.println(tweets.getTweet(0));
+		
 	}
 }
