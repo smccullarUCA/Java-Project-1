@@ -19,7 +19,7 @@ public class Tweet {
 			}
 			catch (NumberFormatException e)
 			{
-				System.out.println("Int parse error");
+				System.out.println("ID parse error");
 				id = 0;
 			}
 		
@@ -42,8 +42,6 @@ public class Tweet {
 	public String getText() {
 		return text;
 	}
-	
-	
 	
 	public String toString() {
 		return polarity + "," + id + "," + user + "," + text;

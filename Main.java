@@ -15,6 +15,7 @@ public class Main {
 		
 		System.out.println(tweets);		
 		System.out.println(tweets.getTweet(0));
+		System.out.println(tweets.getTweet(999999999));
 		
 	}
 }

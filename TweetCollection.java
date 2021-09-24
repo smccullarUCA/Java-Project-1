@@ -7,37 +7,38 @@ import java.io.IOException;
 
 public class TweetCollection {
 	private Tweet[] tweets;
-	private int size;
-	private final int DEFAULT_SIZE = 10;
+	private int size = 0;
+	private final int DEFAULT_SIZE = 16;
 	private final int TOSTRING_LINES = 10;
 	
 	private void doubleArray () {
-		Tweet[] temp = new Tweet[tweets.length*2];
-		for (int i = 0; i < size; i++) {
-			temp[i] = tweets[i];
-		}		
+		Tweet[] temp = new Tweet[size*2];	
+		System.arraycopy(tweets, 0, temp, 0, size);	
 		tweets = temp;
 	}
 	
 	public TweetCollection() {
-		size = DEFAULT_SIZE;
-		tweets = new Tweet[size];
+		tweets = new Tweet[DEFAULT_SIZE];
 	}
 	
 	public TweetCollection(int size) {
-		this.size = size;
 		tweets = new Tweet[size];
 	}
 	
 	public void addTweet(Tweet t) {
 		if (size >= tweets.length)
 			doubleArray();
+		
 		tweets[size] = t;
 		size++;
 	}
 	
 	public Tweet getTweet(int i) {
-		return tweets[i];
+		if (i<size) {
+			return tweets[i];
+		} else {
+			return null;
+		}
 	}
 	
 	public void readFile(String path) {
@@ -45,17 +46,14 @@ public class TweetCollection {
 			BufferedReader read = new BufferedReader(new FileReader(path));
 
 			String line;
-			int i=0;
+//			int i=0;
 			while ((line = read.readLine()) != null) {
 		        Tweet tweet = new Tweet(line);
 		        addTweet(tweet);
-		        i++;
+//		        i++;
 			};
-			System.out.println("Read " + i + " lines");
-			read.close();
-			
-			System.out.println(tweets[5]);
-				
+//			System.out.println("Read " + i + " lines");
+			read.close();				
 		} catch (FileNotFoundException e) {
 			
 		} catch (IOException e) {
