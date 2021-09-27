@@ -12,10 +12,13 @@ public class Main {
 		final String PATH = "trainingProcessed.txt";
 		TweetCollection tweets = new TweetCollection();
 		tweets.readFile(PATH);
+		tweets.writeFile("output.txt");
+		
 		
 		System.out.println(tweets);		
 		System.out.println(tweets.getTweet(0));
-		System.out.println(tweets.getTweet(999999999));
+		
+		System.out.println(tweets.testPredictions());	
 		
 	}
 }

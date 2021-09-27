@@ -27,6 +27,26 @@ public class Tweet {
 		text = s.split(",")[3];
 	}
 	
+	public void parseTweet(String s) {
+		polarity = s.split(",")[0];
+		
+		try {
+				id = Long.parseLong(s.split(",")[1]);
+			}
+			catch (NumberFormatException e)
+			{
+				System.out.println("ID parse error");
+				id = 0;
+			}
+		
+		user = s.split(",")[2];
+		text = s.split(",")[3];
+		
+	}
+	
+	
+	
+	
 	public String getPolatiry() {
 		return polarity;
 	}
